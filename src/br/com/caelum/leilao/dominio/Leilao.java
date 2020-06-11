@@ -15,7 +15,24 @@ public class Leilao {
 	}
 	
 	public void propoe(Lance lance) {
-		lances.add(lance);
+		if (lances.isEmpty() || podeDarLance(lance.getUsuario())) lances.add(lance);
+	}
+	
+	public boolean podeDarLance(Usuario usuario) {
+		return !ultimoLanceDado().getUsuario().equals(usuario)
+				&& qtdLances(usuario) < 5;
+		}
+	
+	private int qtdLances(Usuario usuario) {
+		int total = 0;
+		for (Lance lance: lances) {
+			if(lance.getUsuario().equals(usuario)) total++;
+		}
+		return total;
+	}
+
+	public Lance ultimoLanceDado() {
+		return lances.get(lances.size()-1);
 	}
 
 	public String getDescricao() {

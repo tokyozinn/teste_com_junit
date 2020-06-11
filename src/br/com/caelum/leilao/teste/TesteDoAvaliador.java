@@ -44,7 +44,9 @@ public class TesteDoAvaliador {
 		
 		Avaliador leiloeiro = new Avaliador();
 		leiloeiro.avalia(leilao);
+		List<Lance> maior = leiloeiro.getTresMaiores();
 		
+		assertEquals(1, maior.size());
 		assertEquals(1000.0, leiloeiro.getMaiorLance(), 0.00001);
 		assertEquals(1000.0, leiloeiro.getMenorLance(), 0.00001);
 	}
